@@ -16,8 +16,10 @@
     </transition>
 
     <transition name="pageTransition">
-     <router-view/>
+      <router-view class="view" ></router-view>
     </transition>
+
+    
 
 
   </div><!-- app -->

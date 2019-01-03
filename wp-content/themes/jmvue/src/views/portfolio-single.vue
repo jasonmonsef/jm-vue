@@ -1,8 +1,8 @@
 <template>
-  <div class="about">
+  <div class="about" >
     
     
-    <div class="single-post" key="t-1"    >
+    <div class="single-post" v-if="post">
       <transition name="bounceInLeft" >
       <div class="preview-image"  v-if="post"   :style="{ 'background-image' : 'url(\'' + post.acf.big_screenshot.sizes.medium_large + '\')' }">
         
@@ -11,20 +11,23 @@
       <transition name="pageTransitionSlow" mode="out-in" >
       <div class="project-details" key="t-2" v-if="post" >
         <h1>{{ post.acf.website_name }}</h1>
+        <div class="tags" v-html="post.acf.statistic_box"></div>
         <div class="website-description" v-html="post.acf.website_description"></div>
         <div class="website-link">
           <a :href="post.acf.website_url" target="_blank">visit site</a>
         </div>
       </div>
         
-    <div v-else>
-      <div class="loadingPost">
-        <img src="../assets/three-dots.svg" alt="">
-      </div>
-    </div>
+  
+      
+    
      </transition>        
 		</div><!-- single-post -->
-    
+    <div class="loadingPost" v-else>
+        <div>
+          <img src="../assets/three-dots.svg" alt="">
+        </div>
+      </div>
       
     
 
@@ -56,27 +59,41 @@ export default {
     document.body.className = 'inner-page';
   },
   created() {
-var vm = this;
-     var getPageID = this.$route.params.postID;
+
+  var parts = current_page_url.split('/');
+  var lastSegment = parts.pop() || parts.pop();
+    console.log("last-seg= " + lastSegment);
+    var vm = this;
+    var getPageID = this.$route.params.postID;
+
     if (getPageID !== undefined && getPageID !== null) {
       var routePageID = getPageID
     } else {
       var routePageID = global_page_id
+      
     }
+
 
   /*  axios.get(root_site_path + '/wp-json/wp/v2/portfolio/' + routePageID).then(response => this.posts = response.data) .then(function (response) {
 				
 				console.log(response);
       });
  */
-    function loadLoyaltyItems(){
-      axios.get('http://localhost/jm-vue/wp-json/wp/v2/portfolio/' + routePageID).then(response => vm.post = response.data).then(function (response) {
+    function loadPageItems(){
+      if (routePageID == undefined){
+          axios.get('http://localhost/jm-vue/wp-json/wp/v2/portfolio/?slug=' + lastSegment).then(response => vm.post = response.data).then(function (response) {
         console.log(response);
   		});
+      } else {
+        axios.get('http://localhost/jm-vue/wp-json/wp/v2/portfolio/' + routePageID).then(response => vm.post = response.data).then(function (response) {
+        console.log(response);
+  		  });
+      }
+      
       
       //console.log(response);
     }
-    loadLoyaltyItems();
+    loadPageItems();
       
       
   }
@@ -86,33 +103,19 @@ var vm = this;
 
 <style scoped lang="scss">
 
-  .pageTransitionSlow-enter-active, .pageTransitionSlow-leave-active {
-    transition-property: opacity;
-    transition-duration: 3.75s;
-  }
-  
-  .pageTransitionSlow-enter-active {
-    transition-delay: 3.75s;
-  }
-  
-  .pageTransitionSlow-enter, .pageTransitionSlow-leave-active {
-    opacity: 0
-  }
 
- .pageTransitionSlow2-enter-active, .pageTransitionSlow-leave-active {
-    transition-property: opacity;
-    transition-duration: .75s;
-  }
-  
-  .pageTransitionSlow2-enter-active {
-    transition-delay: .75s;
-  }
-  
-  .pageTransitionSlow2-enter, .pageTransitionSlow-leave-active {
-    opacity: 0
-  }
 
-.loadingPost img {fill: red}
+.loadingPost {
+  width:100%;
+  height: 300px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+
+  img {display:block}
+  
+
+}
 .about {padding:200px 40px 80px}
 .inner-page h1 {color:#000;font-size:40px;margin-bottom:20px;}
 .single-post {display:flex}
@@ -136,13 +139,24 @@ var vm = this;
 	display: inline-block;
 	padding: 10px 20px;
 	color: #000;
-	font-size: 17px;
+  font-size: 17px;
+  border-radius: 5px;
 }
   
 }
 
 .preview-image {width:40%;height: 600px;background-size:cover;background-repeat:no-repeat;border: 5px solid #eaeaea;margin-right:30px}
 .project-details {width:60%}
+
+.tags span {
+	background: #000;
+	color: #fff;
+	padding: 5px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	margin-bottom: 13px;
+}
+
 
 </style>
 

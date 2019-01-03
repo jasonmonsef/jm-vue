@@ -11,11 +11,13 @@ add_action('init', 'remove_redirects');
 // Load scripts
 function load_vue_scripts() {
     wp_enqueue_style('jm/app.css', get_template_directory_uri() . '/dist/styles/app.css', false, null);
-    // wp_enqueue_script('jm/jquery.js', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', null, null, true);
+    wp_enqueue_script('jm/jquery.js', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', null, null, true);
+    wp_enqueue_script('jm/parsley.js', get_template_directory_uri() . '/dist/scripts/parsley.js', null, null, true);
     wp_enqueue_script('jm/granim.min.js',get_template_directory_uri() . '/dist/scripts/granim.min.js', null, null, true);
     wp_enqueue_script('jm/manifest.js', get_template_directory_uri() . '/dist/scripts/manifest.js', null, null, true);
     wp_enqueue_script('jm/vendor.js', get_template_directory_uri() . '/dist/scripts/vendor.js', null, null, true);
     wp_enqueue_script('jm/app.js', get_template_directory_uri() . '/dist/scripts/app.js', null, null, true);
+    // wp_enqueue_script('jm/waypoint.js', 'https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js', null, null, true);
     // wp_enqueue_script( 'jm/isotope.js','https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js', null, null, true);
     
     

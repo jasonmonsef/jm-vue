@@ -1,0 +1,59 @@
+.pageTransition-enter-active, .pageTransition-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+  }
+  
+  .pageTransition-enter-active {
+    transition-delay: .25s;
+  }
+  
+  .pageTransition-enter, .pageTransition-leave-active {
+    opacity: 0
+  }
+
+
+  .pageTransitionSlow-enter-active, .pageTransitionSlow-leave-active {
+    transition-property: opacity;
+    transition-duration: .35s;
+  }
+  
+  .pageTransitionSlow-enter-active {
+    transition-delay: .35s;
+  }
+  
+  .pageTransitionSlow-enter, .pageTransitionSlow-leave-active {
+    opacity: 0
+  }
+  
+
+  .listFadeTransition-enter-active, .listFadeTransition-leave-active {
+    transition-property: opacity;
+    transition-duration: 1.35s;
+  }
+  
+  .listFadeTransition-enter-active {
+    transition-delay: 1.35s;
+  }
+  
+  .listFadeTransition-enter, .listFadeTransition-leave-active {
+    opacity: 0
+  }
+  
+  
+
+ .bounceInLeft-enter-active, .bounceInLeft-leave-active {
+    transition: opacity, transform 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition-delay: .55s;
+  }
+  
+  .bounceInLeft-enter-active-to {
+     opacity: 1;
+     transform: translate3d(0, 0, 0);
+ 
+  }
+  
+  .bounceInLeft-enter, .bounceInLeft-leave-active {
+    opacity: 0;
+  
+ transform: translate3d(-3000px, 0, 0);
+  }

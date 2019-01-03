@@ -27,7 +27,7 @@
 
     <div id="showcase">
       <div class="post-list-wrap">  
-	      <div class="single-post" v-for="post in posts" :key="post.id" :style="{ 'background-image' : 'url(\'' + post.acf.big_screenshot.sizes.medium_large + '\')' }">
+	      <div class="single-post" v-for="post in posts" :key="post.id"  :style="{ 'background-image' : 'url(\'' + post.acf.big_screenshot.sizes.medium_large + '\')' }">
           
             <div class="featured-overlay">
 					  	<h3>{{ post.title.rendered }}</h3>
@@ -65,14 +65,14 @@ export default {
 
 created() {
     var vm = this;
-    function loadLoyaltyItems(){
-      axios.get('/jm-vue/wp-json/wp/v2/portfolio?order=asc').then(response => vm.posts = response.data).then(function (response) {
+    function loadPageData(){
+      axios.get('/jm-vue/wp-json/wp/v2/portfolio?order=asc&per_page=6').then(response => vm.posts = response.data).then(function (response) {
         console.log(response);
   		});
       
       //console.log(response);
     }
-    loadLoyaltyItems();
+    loadPageData();
 
   
   
@@ -101,7 +101,8 @@ created() {
   margin:0 auto;
 
   a {
-  	border: 3px solid #000;
+    border: 3px solid #000;
+    border-radius:5px;
   	color: #000;
   	display: inline-block;
   	font-weight: bold;
@@ -140,11 +141,14 @@ created() {
   
 }
 #showcase {
+
+  margin-bottom: 120px;
+
   .post-list-wrap {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap:30px;
-    padding:0 30px
+    padding:0 30px;
   }
   .single-post  {
   	background-size: cover;

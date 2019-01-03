@@ -28,9 +28,8 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-    ,
+      component: () => import(/* webpackChunkName: "about" */ './views/portfolio.vue')
+    },
     {
       path: '/jm-vue/portfolio/:postSlug',
       name: 'portfolio-single',
@@ -40,5 +39,9 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/portfolio-single.vue')
     }
-  ]
+  ],
+  //make page scroll to top on rout change
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

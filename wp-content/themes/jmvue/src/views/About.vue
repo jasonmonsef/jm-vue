@@ -1,5 +1,5 @@
 <template>
-  <div class="about" v-if="post">
+  <div class="about container" v-if="post">
     <!-- <img src="../assets/rcm-brand-logo.png"> -->
     
     <div class="page-wrap">
@@ -81,9 +81,9 @@ var vm = this;
 <style scoped lang="scss">
 .page-wrap {padding-top:100px}
 .page-wrap .inner-wrap {max-width:1200px;margin:0 auto;padding: 0 20px 60px;}
-
+.page-content {margin-bottom: 120px}
 h1 {color:#000;margin-bottom: 70px}
-.banner {position: relative;margin-bottom:70px}
+.banner {position: relative;margin-bottom:100px}
 .banner img {width: 100%;height: auto}
 .banner .caption {
 	position: absolute;

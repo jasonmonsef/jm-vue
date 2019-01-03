@@ -12,13 +12,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router.js'
 import VueLazyload from 'vue-lazyload'
-import VueQrcodeReader from 'vue-qrcode-reader'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import $ from "jquery";
+import VueWaypoint from 'vue-waypoint'
 
+// Waypoint plugin
+Vue.use(VueWaypoint)
 
-Vue.use(VueQrcodeReader)
 //Vue.use(VueAxios, axios)
 
 // const HelloJs = require('hellojs/dist/hello.all.min.js');
@@ -37,27 +38,24 @@ Vue.use(VueLazyload)
 // });
 // Vue.use(VueHello, HelloJs);
 const myMixin = {
+  
+  methods: { 
+    scrollToTop() {
+         window.scrollTo(0,0);
+    }
+ },
   mounted: function () {
-  //   $(window).scroll(function (event) {
-  //     var scroll = $(window).scrollTop();
-  //     $('.top-header-wrap').toggleClass('active',
-  //      //add 'ok' class when div position match or exceeds else remove the 'ok' class.
-  //       scroll >= $('#hero-banner').offset().top
-  //     );
-  // });
-  // //trigger the scroll
-  // $(window).scroll();//ensure if you're in current position when page is refreshed
-
 
   $(window).scroll(function() {    
     var scroll = $(window).scrollTop();
 
-    if (scroll >= 100) {
+    if (scroll >= 1) {
         $(".top-header-wrap").addClass("active");
     } else {
         $(".top-header-wrap").removeClass("active");
     }
-});
+  
+  });
   
   }
   
