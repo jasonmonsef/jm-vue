@@ -206,5 +206,30 @@ created() {
   // 0%, 100%  { -webkit-filter: blur(0px) brightness(none) hue-rotate(0deg) saturate(none); }
   50% { -webkit-filter: brightness(10) blur(10px) hue-rotate(180deg) saturate(10); }
 }
+@media screen and (max-width: 768px) {
+  .home #hero-banner .message {padding-top: 24%}
+}
+@media screen and (max-width: 715px) {
+  #intro-wrap .inner-wrap {flex-direction: column}
+  #intro-wrap .inner-wrap .intro {width: 100%;text-align: center;}
+  #intro-wrap .inner-wrap .quick-links {width:100%;justify-content: center}
+  #showcase .post-list-wrap {grid-template-columns: repeat(2, 1fr)}
+}
+@media screen and (max-width: 465px) {
 
+  .home #hero-banner .message {
+  	padding-top: 34%;
+  	flex-grow: 1;
+  }
+
+  .home #hero-banner h1 {
+	  font-size: 54px;
+	  text-align: center;
+  }
+  .home #hero-banner h2 {
+	  font-size: 20px;
+	  text-align: center;
+  }
+   #showcase .post-list-wrap {grid-template-columns: repeat(1, 1fr)}
+}
 </style>

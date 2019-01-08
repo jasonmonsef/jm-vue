@@ -22,7 +22,7 @@
 	    <div class="triangle"></div>
 	    <div id="contact-inner" class="wow bounceIn" data-wow-delay=".5s">
 		  <h3>Get in touch!</h3>
-		  <p>I'm currently accepting freelance projects, so feel free to drop me a line if you're interested!</p>
+		  <p class="results">I'm currently accepting freelance projects, so feel free to drop me a line if you're interested!</p>
 		    <form id="gf_web_api_form">
           <div class="flex-wrap input-wrap">
 		  		  <input id="input_2_1" name="input_2_1" type="text" placeholder="First Name" required/>
@@ -84,6 +84,7 @@ $.ajax({
 })
 .done(function (data, textStatus, xhr) {
     $sending.hide();
+    $("#gf_web_api_form").slideUp();
     var response = JSON.stringify(data.response.confirmation_message, null, '\t');
     $results.html(response.replace(/\"/g, ""));
     $('.contact-form p').fadeOut();

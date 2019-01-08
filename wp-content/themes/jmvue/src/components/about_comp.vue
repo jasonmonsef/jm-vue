@@ -203,7 +203,11 @@ a {
         grid-column: 1 / 5;
         grid-row: 3;
     }
-
-
-
+@media screen and (max-width: 800px) {
+  #resume {column-count: 2;}
+}
+@media screen and (max-width: 600px) {
+  #resume {column-count: 1;}
+  .clients-wrap img:nth-of-type(1n+6) {display: none;}
+}
 </style>

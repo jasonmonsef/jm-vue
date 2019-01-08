@@ -40,6 +40,8 @@ Vue.use(VueLazyload)
 const myMixin = {
   
   methods: { 
+
+
     scrollToTop() {
          window.scrollTo(0,0);
     }

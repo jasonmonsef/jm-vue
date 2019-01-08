@@ -64,7 +64,7 @@ created() {
     loadPageData();
 
   
-  
+  2
 },
  methods: {
     onWaypoint ({ going, direction }) {
@@ -78,11 +78,11 @@ created() {
         //element.classList.add("mystyle");
       }
  
-      if (direction === this.$waypointMap.DIRECTION_TOP) {
+      /* if (direction === this.$waypointMap.DIRECTION_TOP) {
         console.log('waypoint going top!')
         document.getElementsByClassName(element)[0].className += " hullaballoo";
         
-      }
+      } */
     }
   }
 };

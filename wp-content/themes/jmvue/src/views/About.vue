@@ -96,4 +96,11 @@ h1 {color:#000;margin-bottom: 70px}
   font-family: oswald
 }
 
+@media screen and (max-width: 600px) {
+  .banner {
+  	position: relative;
+  	margin-bottom: 60px;
+  	display: none;
+  }
+}
 </style>

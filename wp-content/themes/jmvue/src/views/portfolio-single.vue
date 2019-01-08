@@ -51,7 +51,8 @@ export default {
   data() {
         return {
             show: true,
-            post:""
+            post:"",
+            isActive: false
         };
     },
   props: ["postID", "postSlug"],
@@ -147,14 +148,21 @@ export default {
 
 .preview-image {width:40%;height: 600px;background-size:cover;background-repeat:no-repeat;border: 5px solid #eaeaea;margin-right:30px}
 .project-details {width:60%}
+.tags {
+	margin-bottom: 35px;
+}
+@media screen and (max-width: 600px) {
+  .about {
+	  padding: 130px 40px 80px;
+  }
+    .single-post {
+        flex-direction: column-reverse;
+    }
+    .project-details {width:100%}
+    .preview-image {width:100%}
+    .website-link {text-align:center;}
+    
 
-.tags span {
-	background: #000;
-	color: #fff;
-	padding: 5px 10px;
-	display: inline-block;
-	border-radius: 5px;
-	margin-bottom: 13px;
 }
 
 
