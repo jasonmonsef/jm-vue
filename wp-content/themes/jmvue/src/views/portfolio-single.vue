@@ -151,9 +151,10 @@ export default {
 .tags {
 	margin-bottom: 35px;
 }
+
 @media screen and (max-width: 600px) {
   .about {
-	  padding: 130px 40px 80px;
+	  padding: 130px 30px 80px;
   }
     .single-post {
         flex-direction: column-reverse;
@@ -161,7 +162,7 @@ export default {
     .project-details {width:100%}
     .preview-image {width:100%}
     .website-link {text-align:center;}
-    
+    .inner-page h1 {font-size:32px}
 
 }
 

@@ -61,8 +61,7 @@ mix.setPublicPath('dist')
    .sass('src/styles/app.scss', 'styles/')
    .copyDirectory('src/assets', 'dist/assets')
    .options({
-      processCssUrls: false,
-      uglify: true
+      processCssUrls: false
     })
    .version();
    mix.setResourceRoot("http://localhost/jm-vue/wp-content/themes/jmvue/dist/");

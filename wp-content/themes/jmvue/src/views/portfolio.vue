@@ -148,4 +148,16 @@ created() {
   }
 
 }
+
+
+@media screen and (max-width: 720px) {
+  #showcase .post-list-wrap {
+  	grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  #showcase .post-list-wrap {
+  	grid-template-columns: 1fr;
+  }
+}
 </style>

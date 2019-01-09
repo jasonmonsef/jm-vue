@@ -6,16 +6,16 @@
         <div class="logo">
           <router-link to="/jm-vue"></router-link>
         </div><!-- logo -->
-        <div class="hamburger hamburger--3dx" v-on:click="myFilter"  v-bind:class="{ 'is-active': isActive }">
+        <div class="hamburger hamburger--3dx" v-on:click="toggleMenu"  v-bind:class="{ 'is-active': isActive }">
           <div class="hamburger-box">
             <div class="hamburger-inner"></div>
           </div>
         </div>
         <div class="nav" v-bind:class="{ 'is-active': isActive }">
           <ul>
-            <li><router-link v-on:click.native="myFilter" to="/jm-vue/about">about</router-link></li>
-            <li><router-link v-on:click.native="myFilter" to="/jm-vue/portfolio">portfolio</router-link></li>
-            <li><router-link v-on:click.native="myFilter" to="/jm-vue/contact">contact</router-link></li>
+            <li><router-link v-on:click.native="toggleMenu" to="/jm-vue/about">about</router-link></li>
+            <li><router-link v-on:click.native="toggleMenu" to="/jm-vue/portfolio">portfolio</router-link></li>
+            <li><a v-on:click="contactScroll">contact</a></li>
           </ul>
         </div>
       </div>
@@ -43,16 +43,15 @@ export default {
         }
   },
   methods: { 
-    myFilter: function(){
+    toggleMenu: function(){
       this.isActive = !this.isActive;
+      document.getElementById('contact-wrap').classList.remove('active');
     // some code to filter users
     },
-    mySecondFilter: function(){
-      console.log("mySecondFilter fired");
-      this.isActive = !this.isActive;
-      if (this.isActive = !this.isActive) {
-       document.getElementsByClassName("hamburger").remove('is-active')
-      }
+    contactScroll: function(){
+      console.log('contactScroll fired')
+      document.getElementById('contact-wrap').scrollIntoView();
+      document.getElementById('contact-wrap').classList.add('active');
     // some code to filter users
     }
   }
@@ -62,20 +61,24 @@ export default {
 <style lang="scss" >
   @import './styles/app.scss';
 
-.top-header-wrap.mobile-menu-active {
-	height: 100vh;
-	align-items: flex-start;
-  background: rgba(0,0,0,.9);
-  
-  
-}
+
  .top-header-wrap .inner-wrap {
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between; 
     width: 100% 
   } 
-  /*!
+
+    
+@media screen and (max-width: 600px) {
+.top-header-wrap.mobile-menu-active {
+	height: 100vh;
+	align-items: flex-start;
+  background: rgba(0,0,0,.9) !important;
+  
+  
+}
+    /*!
  * Hamburgers
  * @description Tasty CSS-animated hamburgers
  * @author Jonathan Suh @jonsuh
@@ -132,6 +135,10 @@ export default {
   .hamburger-inner::after {
     bottom: -10px; }
 
+    body.home .hamburger-inner,body.home  .hamburger-inner::before,body.home  .hamburger-inner::after {
+    background-color: #fff;
+    }
+
 /*
    * 3DX
    */
@@ -151,8 +158,6 @@ export default {
   .hamburger--3dx.is-active .hamburger-inner::after {
     transform: translate3d(0, -10px, 0) rotate(-45deg); }
 
-    
-@media screen and (max-width: 600px) {
   .nav {height:0;overflow: hidden;transition: all 0.3s ease 0s;flex: 1 1 auto;width:100%}
   .nav.is-active {
     display: block;

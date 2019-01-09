@@ -215,7 +215,7 @@ created() {
   #intro-wrap .inner-wrap .quick-links {width:100%;justify-content: center}
   #showcase .post-list-wrap {grid-template-columns: repeat(2, 1fr)}
 }
-@media screen and (max-width: 465px) {
+@media screen and (max-width: 600px) {
 
   .home #hero-banner .message {
   	padding-top: 34%;
